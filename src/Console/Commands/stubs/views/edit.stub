@@ -1,0 +1,14 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div class="container">
+        <h2>Edit {{model}}</h2>
+        {{ Form::model(${{singular}}, ['route' => ['admin.{{plural}}.update', ${{singular}}], 'method' => 'put']) }}
+        @include('admin.{{singular}}._fields')
+        <div>
+            {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
+            <a href="{{ route('admin.{{plural}}.index') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+        {{ Form::close() }}
+    </div>
+@endsection

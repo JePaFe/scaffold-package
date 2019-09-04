@@ -1,0 +1,16 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        <h2>{{ ${{singular}}->name }}</h2>
+        <div>
+            <a href="{{ route('admin.{{plural}}.edit', ${{singular}}) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('admin.{{plural}}.index') }}" class="btn btn-secondary">List</a>
+        </div>
+    </div>
+@endsection
