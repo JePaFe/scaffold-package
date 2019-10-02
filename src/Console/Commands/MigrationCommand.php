@@ -46,7 +46,7 @@ class MigrationCommand extends Command
         $stub_file = $this->files->get($stub);
 
         $search = ['{{class}}', '{{table}}'];
-        $replace = ['Create' . str_plural($model) . 'Table', str_plural(snake_case($model))];
+        $replace = ['Create' . Str::plural($model) . 'Table', Str::plural(Str::snake($model))];
         $stub = str_replace($search, $replace, $stub_file);
 
         $model_plural = Str::plural(strtolower($model));
