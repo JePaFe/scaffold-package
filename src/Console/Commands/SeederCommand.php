@@ -4,6 +4,7 @@ namespace JePaFe\Scaffold\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class SeederCommand extends Command
 {
@@ -43,11 +44,12 @@ class SeederCommand extends Command
 
         $stub = __DIR__ . '/stubs/Seeder.stub';
         $stub_file = $this->files->get($stub);
-        $stub = str_replace('{{class}}', "{$model}TableSeeder", $stub_file);
+        $model_plural = Str::plural($model);
+        $stub = str_replace('{{class}}', "{$model_plural}TableSeeder", $stub_file);
 
         $seeds_path = database_path('seeds');
 
-        $seeder_path = "{$seeds_path}/{$model}TableSeeder.php";
+        $seeder_path = "{$seeds_path}/{$model_plural}TableSeeder.php";
 
         if ($this->files->exists($seeder_path)) {
             $this->error('Seeder already exists!');
