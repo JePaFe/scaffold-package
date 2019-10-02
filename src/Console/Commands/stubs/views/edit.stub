@@ -4,6 +4,7 @@
     <div class="container">
         <h2>Edit {{model}}</h2>
         {{ Form::model(${{singular}}, ['route' => ['admin.{{plural}}.update', ${{singular}}], 'method' => 'put']) }}
+        {!! Form::hidden('id') !!}
         @include('admin.{{singular}}._fields')
         <div>
             {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
